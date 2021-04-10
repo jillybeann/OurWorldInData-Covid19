@@ -15,13 +15,10 @@ PRINT 'Creating Procedure ourworldindata.Extract_CovidDataByDay'
 GO
 
 -- =============================================
--- Author:		Jillian Lenox
+-- Author:		Jillian
 -- Create date:	2021/03/26
 -- Description:	Detailed COVID-19 Data by Day
 -- Updates:
---				2021/03/26 jlenox	Created
---              2021/03/30 jlenox   Updated fields and data types
---              2021/04/05 jlenox   INSERT INTO instead of SELECT INTO
 -- =============================================
 CREATE PROCEDURE ourworldindata.Extract_CovidDataByDay (
 	@StartDate DATE = NULL,
