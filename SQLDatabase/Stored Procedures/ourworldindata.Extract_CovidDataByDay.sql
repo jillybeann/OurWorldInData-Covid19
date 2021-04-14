@@ -60,11 +60,11 @@ BEGIN
             CAST(CAST([new_deaths] AS decimal(20,0)) AS bigint) AS NewDeaths,
             CAST(CAST([new_deaths_smoothed] AS decimal(20,0)) AS bigint) AS NewDeathsSmoothed,
             -- [total_cases_per_million],
-            -- [new_cases_per_million],
-            -- [new_cases_smoothed_per_million],
+            CAST(CAST([new_cases_per_million] AS decimal(20,0)) AS bigint) AS NewCasesPerMillion,
+            CAST(CAST([new_cases_smoothed_per_million] AS decimal(20,0)) AS bigint) AS NewCasesSmoothedPerMillion,
             -- [total_deaths_per_million],
-            -- [new_deaths_per_million],
-            -- [new_deaths_smoothed_per_million],
+            CAST(CAST([new_deaths_per_million] AS decimal(20,0)) AS bigint) AS NewDeathsPerMillion,
+            CAST(CAST([new_deaths_smoothed_per_million] AS decimal(20,0)) AS bigint) AS NewDeathsSmoothedPerMillion,
             -- [reproduction_rate],
             -- [icu_patients],
             -- [icu_patients_per_million],
@@ -124,6 +124,10 @@ BEGIN
             ,[NewCasesSmoothed]
             ,[NewDeaths]
             ,[NewDeathsSmoothed]
+            ,[NewCasesPerMillion]
+            ,[NewCasesSmoothedPerMillion]
+            ,[NewDeathsPerMillion]
+            ,[NewDeathsSmoothedPerMillion]
             ,[HospitalizedPatients]
             ,[NewTests]
             ,[NewTestsSmoothed]

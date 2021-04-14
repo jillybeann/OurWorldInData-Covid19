@@ -17,14 +17,18 @@ CREATE TABLE [ourworldindata].[CovidDataByDay](
 	[NewCasesSmoothed] [bigint] NULL,
 	[NewDeaths] [bigint] NULL,
 	[NewDeathsSmoothed] [bigint] NULL,
+	[NewCasesPerMillion] [bigint] NULL,
+	[NewCasesSmoothedPerMillion] [bigint] NULL,
+	[NewDeathsPerMillion] [bigint] NULL,
+	[NewDeathsSmoothedPerMillion] [bigint] NULL,
 	[HospitalizedPatients] [bigint] NULL,
 	[NewTests] [bigint] NULL,
 	[NewTestsSmoothed] [bigint] NULL,
 	[NewVaccinations] [bigint] NULL,
 	[NewVaccinationsSmoothed] [bigint] NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[CreatedUTCDate] [datetime] NOT NULL,
-	[CreatedByUser] [nvarchar](128) NOT NULL,
+	[CreatedDate] [datetime]  NOT NULL CONSTRAINT [DF_CovidDataByDay_CreatedDate]  DEFAULT (getdate()),
+	[CreatedUTCDate] [datetime] NOT NULL CONSTRAINT [DF_CovidDataByDay_CreatedUTCDate]  DEFAULT (getutcdate()),
+	[CreatedByUser] [nvarchar](128) NOT NULL CONSTRAINT [DF_CovidDataByDay_CreatedByUser]  DEFAULT (suser_sname()),
  CONSTRAINT [PK_CovidDataByDay] PRIMARY KEY CLUSTERED 
 (
 	[CovidDataByDayID] ASC
@@ -49,13 +53,5 @@ CREATE NONCLUSTERED INDEX [IX_CovidDataByDay_Location] ON [ourworldindata].[Covi
 )WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 
-ALTER TABLE [ourworldindata].[CovidDataByDay] ADD  CONSTRAINT [DF_CovidDataByDay_CreatedDate]  DEFAULT (getdate()) FOR [CreatedDate]
-GO
-
-ALTER TABLE [ourworldindata].[CovidDataByDay] ADD  CONSTRAINT [DF_CovidDataByDay_CreatedUTCDate]  DEFAULT (getutcdate()) FOR [CreatedUTCDate]
-GO
-
-ALTER TABLE [ourworldindata].[CovidDataByDay] ADD  CONSTRAINT [DF_CovidDataByDay_CreatedByUser]  DEFAULT (suser_sname()) FOR [CreatedByUser]
-GO
 
 
